@@ -12,17 +12,7 @@ type EntityArrayResponseType = HttpResponse<INavigation[]>;
 export class NavigationService {
 
 
-  constructor(private httpClient: HttpClient) { }
-
-  create(appUrl:string, navigation: INavigation): Observable<EntityResponseType>{
-    return this.httpClient
-      .post<INavigation>(appUrl+"/navigation/save", navigation, {observe: 'response'});
-  }
-
-  update(appUrl:string, navigation: INavigation): Observable<EntityResponseType>{
-    return this.httpClient
-      .put<INavigation>(appUrl+"/navigation/save", navigation, {observe: 'response'});
-  }
+  constructor(protected httpClient: HttpClient) { }
 
   find(appUrl: string, id: string): Observable<EntityResponseType>{
     return this.httpClient
