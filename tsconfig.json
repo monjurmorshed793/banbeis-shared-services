@@ -2,6 +2,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "banbeis-shared-services": [
+        "dist/banbeis-shared-services/banbeis-shared-services",
+        "dist/banbeis-shared-services"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

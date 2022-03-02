@@ -1,7 +1,42 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "6ad0b271-c21b-4cfc-a9fe-56e547710880"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "banbeis-shared-services": {
+      "projectType": "library",
+      "root": "projects/banbeis-shared-services",
+      "sourceRoot": "projects/banbeis-shared-services/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/banbeis-shared-services/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/banbeis-shared-services/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/banbeis-shared-services/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/banbeis-shared-services/src/test.ts",
+            "tsConfig": "projects/banbeis-shared-services/tsconfig.spec.json",
+            "karmaConfig": "projects/banbeis-shared-services/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "banbeis-shared-services"
 }
