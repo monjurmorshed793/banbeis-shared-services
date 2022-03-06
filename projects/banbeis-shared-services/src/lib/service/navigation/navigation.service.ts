@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {INavigation} from "../../models/navigation";
 import {Observable} from "rxjs";
+import {APP_URL} from "../../banbeis-shared-services.module";
 
 type EntityResponseType = HttpResponse<INavigation>;
 type EntityArrayResponseType = HttpResponse<INavigation[]>;
@@ -14,13 +15,13 @@ export class NavigationService {
 
   constructor(protected httpClient: HttpClient) { }
 
-  find(appUrl: string, id: string): Observable<EntityResponseType>{
+  find( id: string): Observable<EntityResponseType>{
     return this.httpClient
-      .get<INavigation>(`${appUrl}/navigation/${id}`, {observe: 'response'});
+      .get<INavigation>(`${APP_URL}/navigation/${id}`, {observe: 'response'});
   }
 
-  getAll(appUrl: string): Observable<EntityArrayResponseType>{
+  getAll(): Observable<EntityArrayResponseType>{
     return this.httpClient
-      .get<INavigation[]>(`${appUrl}/navigation/all`, {observe: 'response'});
+      .get<INavigation[]>(`${APP_URL}/navigation/all`, {observe: 'response'});
   }
 }

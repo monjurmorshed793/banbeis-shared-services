@@ -3,6 +3,8 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {INavigation} from "../../models/navigation";
 import {NavigationService} from "./navigation.service";
 import {Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
+import {APP_URL} from "../../banbeis-shared-services.module";
 
 type EntityResponseType = HttpResponse<INavigation>;
 type EntityArrayResponseType = HttpResponse<INavigation[]>;
@@ -16,14 +18,14 @@ export class SecuredNavigationService extends NavigationService{
     super(httpClient);
   }
 
-  create(appUrl:string, navigation: INavigation): Observable<EntityResponseType>{
+  create( navigation: INavigation): Observable<EntityResponseType>{
     return this.httpClient
-      .post<INavigation>(appUrl+"/navigation/save", navigation, {observe: 'response'});
+      .post<INavigation>(APP_URL+"/navigation/save", navigation, {observe: 'response'});
   }
 
   update(appUrl:string, navigation: INavigation): Observable<EntityResponseType>{
     return this.httpClient
-      .put<INavigation>(appUrl+"/navigation/save", navigation, {observe: 'response'});
+      .put<INavigation>(APP_URL+"/navigation/save", navigation, {observe: 'response'});
   }
 
 }
