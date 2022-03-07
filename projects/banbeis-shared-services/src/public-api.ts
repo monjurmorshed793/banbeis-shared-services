@@ -4,6 +4,7 @@
 
 // services
 export * from './lib/banbeis-shared-services.service';
+
 export * from './lib/service/navigation/navigation.service';
 
 // components

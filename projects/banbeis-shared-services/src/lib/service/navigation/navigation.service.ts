@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {INavigation} from "../../models/navigation";
 import {Observable} from "rxjs";
@@ -13,7 +13,7 @@ type EntityArrayResponseType = HttpResponse<INavigation[]>;
 export class NavigationService {
 
 
-  constructor(protected httpClient: HttpClient) { }
+  constructor(protected httpClient: HttpClient,  @Inject(APP_URL) APP_URL: string) { }
 
   find( id: string): Observable<EntityResponseType>{
     return this.httpClient

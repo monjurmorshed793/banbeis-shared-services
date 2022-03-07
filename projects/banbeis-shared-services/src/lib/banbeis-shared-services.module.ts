@@ -1,4 +1,4 @@
-import {InjectionToken, NgModule} from '@angular/core';
+import {InjectionToken, ModuleWithProviders, NgModule} from '@angular/core';
 import { BanbeisSharedServicesComponent } from './banbeis-shared-services.component';
 import {HttpClientModule} from "@angular/common/http";
 
@@ -17,7 +17,7 @@ export const APP_URL = new InjectionToken<string>('API_URL')
   ]
 })
 export class BanbeisSharedServicesModule {
-  static forRoot(host: string){
+  static forRoot(host: string): ModuleWithProviders<BanbeisSharedServicesModule>{
     return {
       ngModule: BanbeisSharedServicesModule,
       providers: [{

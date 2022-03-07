@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {INavigation} from "../../models/navigation";
 import {NavigationService} from "./navigation.service";
 import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment";
 import {APP_URL} from "../../banbeis-shared-services.module";
 
 type EntityResponseType = HttpResponse<INavigation>;
@@ -14,8 +13,8 @@ type EntityArrayResponseType = HttpResponse<INavigation[]>;
 })
 export class SecuredNavigationService extends NavigationService{
 
-  constructor(httpClient: HttpClient) {
-    super(httpClient);
+  constructor(httpClient: HttpClient, @Inject(APP_URL) APP_URL: string) {
+    super(httpClient, APP_URL);
   }
 
   create( navigation: INavigation): Observable<EntityResponseType>{
