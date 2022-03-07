@@ -5,7 +5,11 @@
 // services
 export * from './lib/banbeis-shared-services.service';
 
+// publicly allowed services
 export * from './lib/service/navigation/navigation.service';
+
+// secured services
+export * from './lib/service/navigation/secured-navigation.service';
 
 // components
 export * from './lib/banbeis-shared-services.component';
