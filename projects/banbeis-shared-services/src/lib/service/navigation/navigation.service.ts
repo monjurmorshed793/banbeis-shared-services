@@ -12,16 +12,19 @@ type EntityArrayResponseType = HttpResponse<INavigation[]>;
 })
 export class NavigationService {
 
+  protected baseUrl!: string;
 
-  constructor(protected httpClient: HttpClient,  @Inject(APP_URL) APP_URL: string) { }
+  constructor(protected httpClient: HttpClient,  @Inject(APP_URL)  baseUrl: string) {
+    this.baseUrl= baseUrl;
+  }
 
   find( id: string): Observable<EntityResponseType>{
     return this.httpClient
-      .get<INavigation>(`${APP_URL}/navigation/${id}`, {observe: 'response'});
+      .get<INavigation>(`${this.baseUrl}/api/shared/navigation/${id}`, {observe: 'response'});
   }
 
   getAll(): Observable<EntityArrayResponseType>{
     return this.httpClient
-      .get<INavigation[]>(`${APP_URL}/navigation/all`, {observe: 'response'});
+      .get<INavigation[]>(`${this.baseUrl}/api/shared/navigation/all`, {observe: 'response'});
   }
 }
