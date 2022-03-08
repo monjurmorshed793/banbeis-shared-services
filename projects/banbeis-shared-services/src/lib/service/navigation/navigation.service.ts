@@ -19,6 +19,7 @@ export class NavigationService {
   }
 
   find( id: string): Observable<EntityResponseType>{
+
     return this.httpClient
       .get<INavigation>(`${this.baseUrl}/api/shared/navigation/${id}`, {observe: 'response'});
   }
@@ -26,5 +27,15 @@ export class NavigationService {
   getAll(): Observable<EntityArrayResponseType>{
     return this.httpClient
       .get<INavigation[]>(`${this.baseUrl}/api/shared/navigation/all`, {observe: 'response'});
+  }
+
+  create( navigation: INavigation): Observable<EntityResponseType>{
+    return this.httpClient
+      .post<INavigation>(this.baseUrl+"/navigation/save", navigation, {observe: 'response'});
+  }
+
+  update(appUrl:string, navigation: INavigation): Observable<EntityResponseType>{
+    return this.httpClient
+      .put<INavigation>(this.baseUrl+"/navigation/save", navigation, {observe: 'response'});
   }
 }
