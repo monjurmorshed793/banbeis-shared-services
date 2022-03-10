@@ -5,5 +5,5 @@ export interface INavigation {
   label: string;
   icon: string;
   roles: string;
-  child: INavigation[];
+  subMenus: INavigation[];
 }
