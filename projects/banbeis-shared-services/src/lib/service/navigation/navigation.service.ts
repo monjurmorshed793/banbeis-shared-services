@@ -36,7 +36,7 @@ export class NavigationService {
 
   update( navigation: INavigation): Observable<EntityResponseType>{
     return this.httpClient
-      .put<INavigation>(this.baseUrl+"/api/secured/navigation/save", navigation, {observe: 'response'});
+      .put<INavigation>(this.baseUrl+"/api/secured/navigation/update", navigation, {observe: 'response'});
   }
 
   delete(id: string): Observable<any>{
