@@ -31,11 +31,16 @@ export class NavigationService {
 
   create( navigation: INavigation): Observable<EntityResponseType>{
     return this.httpClient
-      .post<INavigation>(this.baseUrl+"/navigation/save", navigation, {observe: 'response'});
+      .post<INavigation>(this.baseUrl+"/api/secured/navigation/save", navigation, {observe: 'response'});
   }
 
-  update(appUrl:string, navigation: INavigation): Observable<EntityResponseType>{
+  update( navigation: INavigation): Observable<EntityResponseType>{
     return this.httpClient
-      .put<INavigation>(this.baseUrl+"/navigation/save", navigation, {observe: 'response'});
+      .put<INavigation>(this.baseUrl+"/api/secured/navigation/save", navigation, {observe: 'response'});
+  }
+
+  delete(id: string): Observable<any>{
+    return this.httpClient
+      .delete(this.baseUrl+"/api/secured/navigation/delete/"+id, {observe: "response"});
   }
 }
