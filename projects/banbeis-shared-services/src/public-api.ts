@@ -4,11 +4,9 @@
 
 // services
 export * from './lib/banbeis-shared-services.service';
-
-// publicly allowed services
 export * from './lib/service/navigation/navigation.service';
+export * from './lib/service/primeng-icon/icon.service';
 
-// secured services
 
 // components
 export * from './lib/banbeis-shared-services.component';
