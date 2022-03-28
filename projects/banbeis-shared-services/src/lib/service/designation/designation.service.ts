@@ -3,6 +3,22 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {IDesignation} from "../../models/designation";
 import {APP_URL} from "../../banbeis-shared-services.module";
 import {Observable} from "rxjs";
+import {Apollo, gql} from "apollo-angular";
+
+const GET_DESIGNATIONS = gql`
+  query allDesignations{
+    allDesignations{
+      id
+      name
+      shortName
+      grade
+      bn{
+        name
+        shortName
+      }
+    }
+  }
+`;
 
 
 type EntityResponseType = HttpResponse<IDesignation>;
@@ -16,7 +32,7 @@ export class DesignationService {
 
   protected url!: string;
 
-  constructor(private httpClient: HttpClient, @Inject(APP_URL) url: string) {
+  constructor(private httpClient: HttpClient, @Inject(APP_URL) url: string, private apollo: Apollo) {
     this.url = url;
   }
 
@@ -25,9 +41,11 @@ export class DesignationService {
       .get<IDesignation>(`${this.url}/api/shared/designation/${id}`, {observe: 'response'});
   }
 
-  getAll(): Observable<EntityArrayResponseType>{
-    return this.httpClient
-      .get<IDesignation[]>(`${this.url}/api/shared/designation/all`, {observe: 'response'});
+  getAll(): any{
+    return this.apollo.watchQuery<any>({
+      query: GET_DESIGNATIONS,
+    })
+      .valueChanges;
   }
 
   createOrUpdate( navigation: IDesignation): Observable<EntityResponseType>{

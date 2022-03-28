@@ -7,6 +7,7 @@ export * from './lib/banbeis-shared-services.service';
 export * from './lib/service/navigation/navigation.service';
 export * from './lib/service/primeng-icon/icon.service';
 export * from './lib/service/designation/designation.service'
+export * from './lib/service/designation/AllDesignationsGQL'
 export * from './lib/pipes/bangla-number-translate.pipe'
 
 // components
