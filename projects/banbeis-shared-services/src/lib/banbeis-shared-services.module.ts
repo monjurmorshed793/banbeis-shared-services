@@ -7,7 +7,7 @@ import {InMemoryCache} from "@apollo/client/core";
 import {HttpLink} from 'apollo-angular/http';
 
 export const APP_URL = new InjectionToken<string>('APP_URL')
-
+export let HOST: string = '';
 
 @NgModule({
   declarations: [
@@ -25,11 +25,12 @@ export const APP_URL = new InjectionToken<string>('APP_URL')
         return {
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: 'http://localhost:8081/graphql'
+            uri: localStorage.getItem('host')+ '/graphql'
           })
         }
       },
-      deps: [HttpLink]
+      deps: [HttpLink],
+      useExisting: APP_URL.toString()
     },
   ],
     exports: [
@@ -40,6 +41,8 @@ export const APP_URL = new InjectionToken<string>('APP_URL')
 export class BanbeisSharedServicesModule {
   static forRoot(host: string): ModuleWithProviders<BanbeisSharedServicesModule>{
     console.log('passed host value', host);
+    localStorage.setItem('host', host);
+    HOST = host;
     return {
       ngModule: BanbeisSharedServicesModule,
       providers: [{

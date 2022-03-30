@@ -10,7 +10,7 @@ export interface AllDesignationResponse {
 @Injectable({
   providedIn: 'root'
 })
-export class AllDesignationsGQL extends Query<AllDesignationResponse>{
+export class AllDesignationsGqlService extends Query<AllDesignationResponse>{
   override document = gql`
     query designations{
       designations{

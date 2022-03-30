@@ -1,5 +1,5 @@
 export interface IDesignation {
-  id: string
+  id: string;
   name: string;
   shortName: string;
   grade: number;
