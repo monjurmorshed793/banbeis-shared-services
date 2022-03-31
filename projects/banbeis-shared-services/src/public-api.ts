@@ -8,6 +8,7 @@ export * from './lib/service/navigation/navigation.service';
 export * from './lib/service/primeng-icon/icon.service';
 export * from './lib/service/designation/designation.service'
 export * from './lib/service/designation/all-designations-gql.service'
+export * from './lib/service/designation/designation-by-id-service'
 export * from './lib/service/designation/save-designation-gql.service'
 export * from './lib/service/designation/update-designation-gql.service'
 
