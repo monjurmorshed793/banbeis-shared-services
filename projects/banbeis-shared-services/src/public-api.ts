@@ -11,6 +11,7 @@ export * from './lib/service/designation/all-designations-gql.service'
 export * from './lib/service/designation/designation-by-id-service'
 export * from './lib/service/designation/save-designation-gql.service'
 export * from './lib/service/designation/update-designation-gql.service'
+export * from './lib/service/designation/delete-designation-by-id.service'
 
 export * from './lib/pipes/bangla-number-translate.pipe'
 
