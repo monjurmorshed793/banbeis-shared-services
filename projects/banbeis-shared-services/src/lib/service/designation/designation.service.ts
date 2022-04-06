@@ -14,9 +14,6 @@ import {DeleteDesignationByIdService} from "./delete-designation-by-id.service";
 
 
 
-
-
-
 type EntityResponseType = HttpResponse<IDesignation>;
 type EntityArrayResponseType = HttpResponse<IDesignation[]>;
 
@@ -44,7 +41,9 @@ export class DesignationService {
   }
 
   getAllDesignations(): QueryRef<AllDesignationResponse>{
-    return this.allDesignationService.watch();
+    const allDesignationQuery =  this.allDesignationService.watch();
+    allDesignationQuery.options.fetchPolicy="no-cache";
+    return allDesignationQuery;
   }
 
   find( id: string): Observable<EntityResponseType>{
