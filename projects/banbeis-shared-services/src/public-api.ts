@@ -12,6 +12,7 @@ export * from './lib/service/designation/designation-by-id-service'
 export * from './lib/service/designation/save-designation-gql.service'
 export * from './lib/service/designation/update-designation-gql.service'
 export * from './lib/service/designation/delete-designation-by-id.service'
+export * from './lib/service/division/division.service'
 
 export * from './lib/pipes/bangla-number-translate.pipe'
 
@@ -23,3 +24,4 @@ export * from './lib/banbeis-shared-services.module';
 
 //models
 export * from './lib/models/navigation';
+export * from './lib/models/division';
