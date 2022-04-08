@@ -25,4 +25,4 @@ export * from './lib/banbeis-shared-services.module';
 //models
 export * from './lib/models/navigation';
 export * from './lib/models/division';
-export * from './lib/models/string-language-type'
+export * from './lib/models/language-type'
