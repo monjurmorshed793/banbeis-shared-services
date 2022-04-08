@@ -1,7 +1,8 @@
+import {ILanguageType} from "./language-type";
+
 export interface IDivision {
   divisionId: string;
-  name: string;
-  bnName: string;
+  name: ILanguageType;
   url: string;
 }
 
