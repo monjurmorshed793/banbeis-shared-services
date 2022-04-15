@@ -3,6 +3,7 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {IDivision} from "../../models/division";
 import {APP_URL} from "../../banbeis-shared-services.module";
 import {Observable} from "rxjs";
+import {CrudService} from "../crud.service";
 
 type EntityResponseType = HttpResponse<IDivision>;
 type EntityArrayResponseType = HttpResponse<IDivision[]>;
@@ -10,7 +11,7 @@ type EntityArrayResponseType = HttpResponse<IDivision[]>;
 @Injectable({
   providedIn: 'root'
 })
-export class DivisionService {
+export class DivisionService implements CrudService{
 
   protected baseUrl!: string;
 
@@ -19,7 +20,7 @@ export class DivisionService {
     this.baseUrl = baseUrl;
   }
 
-  find(id: string): Observable<EntityResponseType>{
+  findById(id: string): Observable<EntityResponseType>{
     return this.httpClient
       .get<IDivision>(`${this.baseUrl}/api/shared/division/${id}`, {observe: "response"});
   }

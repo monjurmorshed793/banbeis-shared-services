@@ -13,6 +13,7 @@ export * from './lib/service/designation/save-designation-gql.service'
 export * from './lib/service/designation/update-designation-gql.service'
 export * from './lib/service/designation/delete-designation-by-id.service'
 export * from './lib/service/division/division.service'
+export * from './lib/service/crud.service'
 
 export * from './lib/pipes/bangla-number-translate.pipe'
 
