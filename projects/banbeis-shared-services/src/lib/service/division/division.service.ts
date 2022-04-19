@@ -30,6 +30,29 @@ export class DivisionService implements CrudService{
       .get<IDivision[]>(`${this.baseUrl}/api/shared/division/all`, {observe: "response"})
   }
 
+  generateReport(): void{
+    this.getReportResponse().subscribe((data)=>{
+      console.log(data);
+      const blob = new Blob([data], {type: 'application/pdf'});
+
+      var downloadURL = window.URL.createObjectURL(blob);
+      var link = document.createElement('a');
+      link.href = downloadURL;
+      link.download = "divisions.pdf";
+      console.log(downloadURL);
+      console.log(data);
+      console.log(link);
+      link.click();
+    });
+  }
+
+  getReportResponse(): Observable<any>{
+    const httpOptions = {
+      responseType: 'blob' as 'json'
+    };
+    return this.httpClient.get(`${this.baseUrl}/api/shared/division/report`, httpOptions);
+  }
+
   save(division: IDivision): Observable<EntityResponseType>{
     return this.httpClient
       .put<IDivision>(this.baseUrl+"/api/secured/division", division, {observe: 'response'});
